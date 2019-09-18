@@ -59,3 +59,35 @@
         Menurut saya, karena APAP sangat penting bagi mahasiswa yang ingin merancang sebuah sistem informasi, dimana pada mata kuliah ini kita dituntut untuk dapat mengerti bagaimana arsitektur perangkat lunak yang baik seharusnya dan bagaimana cara melakukan praktik pemrogramannya.
         
 - [ ] Mengapa saya harus menggunakan Spring?
+
+---
+
+## Tutorial 2
+### What I have learned today
+1. ***Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:***
+    http://localhost:8080/restoran/add?idRestoran=1&nama=PanyuFC&alamat=Kantin%20Fasilkom&nomorTelepon=14022
+
+    ***Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.***
+    
+    Yang terjadi adalah error karena template _view_ "add-restoran" pada _controller_ sebagai file untuk dirender belum ada atau belum dibuat.
+
+2. ***Cobalah untuk menambahkan sebuah restoran dengan mengakses link berikut:***
+    http://localhost:8080/restoran/add?idRestoran=2&nama=KentukuFC&alamat=Kantin%20FIK
+    
+    ***Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.***
+    
+    Error terjadi karena parameter yang dibutuhkan tidak lengkap, ada kekurangan pada bagian nomorTelepon yang tidak ada, sementara _required_ untuk parameter tersebut adalah _true_ alias harus diisi.
+
+3.  ***Jika Papa APAP ingin melihat restoran PanyuFC, link apa yang harus diakses?***
+    
+    Karena Papa APAP tidak mengetahui atribut lain selain nama restoran, seperti idRestoran, alamat, dan nomorTelepon, maka Papa APAP perlu mengakses link http://localhost:8080/restoran/viewall terlebih dahulu untuk mencari informasi atribut tersebut. Setelah itu baru Papa APAP dapat mengakses link view dengan memasukkan atribut yang sudah diketahui: http://localhost:8080/restoran/view?idRestoran=1&nama=PanyuFC&alamat=Kantin%20Fasilkom&nomorTelepon=14022
+
+4. ***Tambahkan 1 contoh restoran lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/restoran/viewall, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.***
+
+    http://localhost:8080/restoran/add?idRestoran=3&nama=FilosoMi&alamat=Kukusan%20Kelurahan&nomorTelepon=19450
+
+    ![alt text](https://i.ibb.co/p4nGkcK/addresto.jpg)
+    ![alt text](https://i.ibb.co/qWbszqb/viewallresto.jpg)
+
+### What I did not understand
+- [ ] Bagaimana cara menggunakan Spring Annotation saat mapping error request?
