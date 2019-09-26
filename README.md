@@ -91,3 +91,31 @@
 
 ### What I did not understand
 - [ ] Bagaimana cara menggunakan Spring Annotation saat mapping error request?
+
+## Tutorial 3
+### What I have learned today
+1. ***Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari method tersebut?***
+    
+    Kegunaan dari method tersebut adalah untuk mencari daftar menu berdasarkan IdRestoran yang telah diberikan. Dapat dilihat bahwa method tersebut perlu mengembalikan sebuah List yang berisi MenuModel. Method akan mencari restoran yan sesuai IdRestoran-nya, lalu mengembalikan menu list yang dimiliki oleh restoran tersebut.
+
+2. ***Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan addRestoranSubmit?***
+
+    Method addRestoranFormPage digunakan untuk mengembalikan halaman pengisian data restoran baru, sedangkan method addRestoranSubmit digunakan untuk meng-*handle* saat pengguna ingin men-*submit* data tersebut. Pada HTML form-add-restoran, method akan mengambil data yang telah dimasukkan, yang kemudian akan dimasukkan ke dalam database oleh method `addRestoranSubmit`.
+
+3. ***Jelaskan apa kegunaan dari JPA Repository?***
+
+    JPA Repository digunakan untuk memasukkan objek-objek Java ke dalam sebuah *relational database*. Terdapat dua bagian dalam JPA, yaitu sebuah mapping subsystem untuk melakukan mapping antara class-class ke relational table dan juga sebuah API EntityManager untuk mengakses objek-objek, mendefinisikan dan mengeksekusikan *query*, dan masih banyak lagi. Dengan JPA Repository, akan lebih mudah bagi kita untuk mengelola objek-objek Java yang perlu kita masukkan ke dalam database beserta dengan ketentuan-ketentuannya.
+
+4. ***Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan MenuModel dibuat?***
+
+    Pada RestoranModel dan MenuModel, terdapat @OneToMany dan @ManyToOne yang menunjukkan relasi model-model tersebut. @OneToMany yang ada di RestoranModel menunjukkan bahwa satu restoran dapat memiliki banyak menu, dan @ManyToOne yang ada di MenuModel menunjukkan bahwa banyak menu dapat dimiliki satu restoran. Dengan mendefinisikan relasi untuk kedua model ini, database akan lebih mudah dalam mengelola objek-objek yang ada.
+
+
+5. ***Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER***
+
+    FetchType.LAZY digunakan saat kita hanya ingin melakukan fetch saat kita membutuhkan datanya. Biasanya, FetchType ini digunakan untuk relasi one-to-many atau many-to-many. Sebaliknya, FetchType.EAGER digunakan saat kita ingin data yang akan di-*fetch* sudah ada saat kita membutuhkannya, jadi ia melakukan fetch seawal mungkin. Biasanya, FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
+
+    CascadeType.ALL digunakan agar segala perubahan yang terjadi pada suatu entitas akan terjadi juga pada entitas yang memiliki relasi ini dengannya. Perubahan dapat terjadi karena DELETE, UPDATE, dan sebagainya. Sebagai contoh, ketika kita menghapus suatu restoran, maka semua menu yang terkait dengan restoran tersebut juga dapat dihapus.
+
+### What I did not understand
+- [ ] -
