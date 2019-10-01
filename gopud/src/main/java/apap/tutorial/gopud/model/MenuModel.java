@@ -17,6 +17,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+
+import java.util.List;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -51,18 +55,6 @@ public class MenuModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private RestoranModel restoran;
-
-    // public MenuModel() {
-    // }
-
-    // public MenuModel(Long id, String nama, BigInteger harga, Integer durasiMasak, String deskripsi, RestoranModel restoran) {
-    //     this.id = id;
-    //     this.nama = nama;
-    //     this.harga = harga;
-    //     this.durasiMasak = durasiMasak;
-    //     this.deskripsi = deskripsi;
-    //     this.restoran = restoran;
-    // }
 
     public Long getId() {
         return this.id;

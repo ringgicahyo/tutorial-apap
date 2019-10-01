@@ -43,18 +43,6 @@ public class RestoranModel implements Serializable {
     @OneToMany(mappedBy = "restoran", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MenuModel> listMenu;
 
-    // public RestoranModel() {
-    // }
-
-    // public RestoranModel(Long idRestoran, String nama, String alamat, Integer nomorTelepon, Integer rating, List<MenuModel> listMenu) {
-    //     this.idRestoran = idRestoran;
-    //     this.nama = nama;
-    //     this.alamat = alamat;
-    //     this.nomorTelepon = nomorTelepon;
-    //     this.rating = rating;
-    //     this.listMenu = listMenu;
-    // }
-
     public Long getIdRestoran() {
         return this.idRestoran;
     }

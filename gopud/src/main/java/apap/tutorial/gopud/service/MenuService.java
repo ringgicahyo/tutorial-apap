@@ -1,5 +1,6 @@
 package apap.tutorial.gopud.service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,4 +13,6 @@ public interface MenuService {
     List<MenuModel> findAllMenuByIdRestoran(long idRestoran);
     Optional<MenuModel> getMenuById(Long id);
     MenuModel changeMenu(MenuModel menuModel);
+    List<MenuModel> listMenu(long idRestoran);
+    void deleteMenu(MenuModel menu);
 }
