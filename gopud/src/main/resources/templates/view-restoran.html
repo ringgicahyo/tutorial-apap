@@ -11,6 +11,10 @@
         <h3 th:text="'Nomor Telp. Restoran: ' + ${resto.nomorTelepon}"></h3>
 
         <td><a th:href="@{/restoran/change/}+${resto.idRestoran}">Change Data Restoran</a></td>
+<<<<<<< HEAD
+=======
+        <td><a th:href="@{/restoran/delete/}+${resto.idRestoran}">Delete Restoran</a></td>
+>>>>>>> feat/tutorial-3-gopud-v2
 
         <h2>Daftar Menu:</h2>
 
@@ -20,6 +24,10 @@
             <h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"></h3>
             <h3 th:text="'Durasi Penyajian: ' + ${menu.durasiMasak}"></h3>
             <td><a th:href="@{/menu/change/}+${menu.id}">Change Data Menu</a></td>
+<<<<<<< HEAD
+=======
+            <td><a th:href="@{/menu/delete/}+${menu.id}">Delete Menu</a></td>
+>>>>>>> feat/tutorial-3-gopud-v2
             <br>
         </div>
 

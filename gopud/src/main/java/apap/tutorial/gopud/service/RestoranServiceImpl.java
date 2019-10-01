@@ -47,6 +47,10 @@ public class RestoranServiceImpl implements RestoranService {
             return null;
         }
     }
-    
 
+    @Override
+    public void deleteRestoran(RestoranModel restoran) {
+        RestoranModel targetRestoran = restoranDB.findById(restoran.getIdRestoran()).get();
+        restoranDB.delete(targetRestoran);
+    }
 }

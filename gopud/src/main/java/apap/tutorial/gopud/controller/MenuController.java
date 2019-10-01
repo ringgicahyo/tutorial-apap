@@ -55,4 +55,17 @@ public class MenuController {
         model.addAttribute("menu", newMenuData);
         return "change-menu";
     }
+
+    // URL mapping delete Restoran
+    @RequestMapping("/menu/delete/{id}")
+    public String deleteMenu(
+        // Path Variable untuk dipass
+        @PathVariable(value = "id") Long id,
+        Model model
+    ) {
+        MenuModel menu = menuService.getMenuById(id).get();
+        menuService.deleteMenu(menu);
+        model.addAttribute("namaMenu", menu.getNama());
+        return "delete-menu";
+    }
 }
