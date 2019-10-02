@@ -126,9 +126,9 @@
 
     Saya mempelajari banyak hal saat saya mengerjakan latihan nomor 2. Terutama, saya jadi mengetahui bahwa menggunakan *template* Thymeleaf dapat mengimplementasi konsep *dynamic view* pada *website* sehingga akan kode akan lebih mudah di-*maintain* dan menjadi lebih efisien. Tahapannya yaitu:
 
-        Menambahkan th:text="${pagetitle}" dan menghapus tulisan 'Navbar' pada fragment.html di bagian tag link <a>
-        Menambahkan <nav th:replace="fragments/fragment :: navbar"></nav> pada tiap template html
-        Menambahkan model.addAttribute("pagetitle", "Form Add Menu"); dan yang lainnya pada controller
+        - Menambahkan th:text="${pagetitle}" dan menghapus tulisan 'Navbar' pada fragment.html di bagian tag link <a>
+        - Menambahkan <nav th:replace="fragments/fragment :: navbar"></nav> pada tiap template html
+        - Menambahkan model.addAttribute("pagetitle", "Form Add Menu"); dan yang lainnya pada controller
 
 2. ***Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3.***
 
