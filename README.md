@@ -119,3 +119,43 @@
 
 ### What I did not understand
 - [ ] -
+
+## Tutorial 4
+### What I have learned today
+1. ***Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2.***
+
+    Saya mempelajari banyak hal saat saya mengerjakan latihan nomor 2. Terutama, saya jadi mengetahui bahwa menggunakan *template* Thymeleaf dapat mengimplementasi konsep *dynamic view* pada *website* sehingga akan kode akan lebih mudah di-*maintain* dan menjadi lebih efisien. Tahapannya yaitu:
+
+        Menambahkan th:text="${pagetitle}" dan menghapus tulisan 'Navbar' pada fragment.html di bagian tag link <a>
+        Menambahkan <nav th:replace="fragments/fragment :: navbar"></nav> pada tiap template html
+        Menambahkan model.addAttribute("pagetitle", "Form Add Menu"); dan yang lainnya pada controller
+
+2. ***Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3.***
+
+3. ***Jelaskan perbedaan th:include dan th:replace.***
+
+    Menurut dokumentasi *thymeleaf.org*, jika kita memiliki situasi seperti berikut:
+        
+        <div th:include="..."> the content goes here </div>
+    
+    fragment akan ditempatkan di dalam `<div>` tag.
+
+    Saat kita menggunakan *replace*:
+
+        <div th:replace="..."> the content goes here </div>
+    
+    maka `<div>` akan digantikan dengan konten yang ada.
+
+    Thymeleaf dapat meng-*include* beberapa bagian dari halaman lain sebagai *fragment* menggunakan *th:include* (akan meng-*include* konten dari fragment ke *host tag*) atau *th:replace* (akan menggantikan *host tag* dengan fragment tersebut).
+    
+
+4. ***Jelaskan bagaimana penggunaan th:object beserta tujuannya.***
+
+    Penggunaan *th:object* di dalam implementasi Thymeleaf digunakan untuk menentukan objek mana yang terikat dengan data-data formulir yang dikirimkan. Jadi, hal ini berguna untuk mendeklarasikan objek model yang akan digunakan untuk mengumpulkan data formulir. Misalnya, kita memiliki potongan kode seperti berikut:
+
+        <form th:action="@{/menu/add}" th:object="${menu}" method="POST">
+    
+    Artinya, pada tag *form* tersebut kita menyisipkan `..th:object="${menu}"..` sebagai tanda bahwa formulir tersebut menggunakan objek **menu** sebagai model untuk pengumpulan data formulirnya.
+
+### What I did not understand
+- [ ] -
