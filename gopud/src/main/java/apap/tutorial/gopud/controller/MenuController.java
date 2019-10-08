@@ -29,6 +29,7 @@ public class MenuController {
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
         menu.setRestoran(restoran);
         model.addAttribute("menu", menu);
+        model.addAttribute("pagetitle", "Form Add Menu");
         return "form-add-menu";
     }
 
@@ -36,6 +37,7 @@ public class MenuController {
     private String addProductSubmit(@ModelAttribute MenuModel menu, Model model) {
         menuService.addMenu(menu);
         model.addAttribute("nama", menu.getNama());
+        model.addAttribute("pagetitle", "Add Menu");
         return "add-menu";
     }
 
@@ -45,6 +47,7 @@ public class MenuController {
         // Mengambil existing data restoran
         MenuModel existingMenu = menuService.getMenuById(id).get();
         model.addAttribute("menu", existingMenu);
+        model.addAttribute("pagetitle", "Form Change Menu");
         return "form-change-menu";
     }
 
@@ -53,19 +56,17 @@ public class MenuController {
     public String changeMenuFormSubmit(@PathVariable Long id, @ModelAttribute MenuModel menu, Model model) {
         MenuModel newMenuData = menuService.changeMenu(menu);
         model.addAttribute("menu", newMenuData);
+        model.addAttribute("pagetitle", "Change Menu");
         return "change-menu";
     }
 
     // URL mapping delete Restoran
-    @RequestMapping("/menu/delete/{id}")
-    public String deleteMenu(
-        // Path Variable untuk dipass
-        @PathVariable(value = "id") Long id,
-        Model model
-    ) {
-        MenuModel menu = menuService.getMenuById(id).get();
-        menuService.deleteMenu(menu);
-        model.addAttribute("namaMenu", menu.getNama());
+    @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
+    private String deleteMenu(@ModelAttribute RestoranModel restoran, Model model) {
+        for (MenuModel menu : restoran.getListMenu()) {
+            menuService.deleteMenu(menu);
+        }
+        model.addAttribute("pagetitle", "Delete Menu");
         return "delete-menu";
     }
 }

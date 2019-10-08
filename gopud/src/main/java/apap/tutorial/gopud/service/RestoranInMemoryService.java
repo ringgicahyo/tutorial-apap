@@ -34,4 +34,9 @@ public class RestoranInMemoryService implements RestoranService {
     public RestoranModel changeRestoran(RestoranModel restoranModel){
         return null;
     }
+
+    @Override
+    public void deleteRestoran(RestoranModel restoran) {
+
+    }
 }
