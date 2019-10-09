@@ -4,6 +4,7 @@ import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.service.MenuService;
 import apap.tutorial.gopud.service.RestoranService;
 
+import org.apache.xerces.impl.xpath.regex.Match;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -108,4 +109,22 @@ public class RestoranControllerTest {
         .andExpect(model().attribute("namaResto", is(nama)));
     }
 
+    @Test
+    public void whenRestoranViewItShouldShowRestoranInfo() throws Exception {
+        RestoranModel restoranModel = new RestoranModel();
+        restoranModel.setIdRestoran(1L);
+        restoranModel.setNama("kaefsi");
+        restoranModel.setAlamat("kutek");
+        restoranModel.setNomorTelepon(14022);
+
+        when(restoranService.getRestoranByIdRestoran(1L)).thenReturn(Optional.of(restoranModel));
+
+        mockMvc.perform(get("/restoran/view?idRestoran=1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(content().string(Matchers.containsString("View Restoran")))
+                .andExpect(content().string(Matchers.containsString("Informasi Restoran")))
+                .andExpect(model().attribute("resto", restoranModel));
+
+        verify(restoranService, times(1)).getRestoranByIdRestoran(1L);
+    }
 }

@@ -26,10 +26,8 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public MenuModel changeMenu(MenuModel menuModel) {
-        // mengambil object menu yang ingin diubah
-        MenuModel targetMenu = menuDB.findById(menuModel.getId()).get();
-
         try {
+            MenuModel targetMenu = menuDB.findById(menuModel.getId()).get();
             targetMenu.setNama(menuModel.getNama());
             targetMenu.setDeskripsi(menuModel.getDeskripsi());
             targetMenu.setHarga(menuModel.getHarga());
@@ -52,9 +50,10 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void deleteMenu(MenuModel menu) {
+    public MenuModel deleteMenu(MenuModel menu) {
         MenuModel targetMenu = menuDB.findById(menu.getId()).get();
         menuDB.delete(targetMenu);
+        return targetMenu;
     }
 
     @Override

@@ -7,10 +7,11 @@
 </head>
 <body>
     <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container-fluid">
     <h3>Tambah Menu</h3>
 
-    <form th:action="@{/menu/add}" th:object="${menu}" method="POST">
-        <input type="hidden" th:field="*{idRestoran}/">
+    <form th:action="@{'/menu/add/' + ${resto.idRestoran}}" th:object="${resto}" method="POST">
+        <input type="hidden" th:field="*{idRestoran}"/>
         <table>
             <thead>
                 <tr>
@@ -18,18 +19,26 @@
                     <th>Deskripsi</th>
                     <th>Harga</th>
                     <th>Durasi Masak (menit)</th>
+                    <th>
+                        <button class="btn btn-sm btn-primary" type="submit" name="addRow" >Add row</button>
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input type="text" name="nama"/></td>
-                    <td><input type="text" name="deskripsi"/></td>
-                    <td><input type="number" name="harga"/></td>
-                    <td><input type="number" name="durasiMasak"/></td>
+                <tr th:each="menu, iterationStatus : *{listMenu}">
+                    <td><input type="text" th:field="*{listMenu[__${iterationStatus.index}__].nama}" /></td>
+                    <td><input type="text" th:field="*{listMenu[__${iterationStatus.index}__].deskripsi}" /></td>
+                    <td><input type="number" th:field="*{listMenu[__${iterationStatus.index}__].harga}" /></td>
+                    <td><input type="number" th:field="*{listMenu[__${iterationStatus.index}__].durasiMasak}" /></td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" name="deleteRow" type="submit" th:value="${iterationStatus.index}" >Hapus</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+        <br>
+        <button class="btn btn-sm btn-primary" type="submit" name="save">Submit</button>
     </form>
+    </div>
 </body>
 </html>

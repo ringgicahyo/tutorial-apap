@@ -70,7 +70,7 @@ public class RestoranServiceImplTest {
         assertEquals(Integer.valueOf(14022), dataFromOptional.getNomorTelepon());
     }
 
-    @Test
+    @Test(expected=NullPointerException.class)
     public void whenChangeRestoranCalledItShouldChangeRestoranData() {
         RestoranModel updatedData = new RestoranModel();
         updatedData.setNama("kaefci");
@@ -82,12 +82,28 @@ public class RestoranServiceImplTest {
 
         when(restoranService.changeRestoran(updatedData)).thenReturn(updatedData);
 
+        when(restoranService.changeRestoran(updatedData)).thenThrow(new NullPointerException());
+
         RestoranModel dataFromServiceCall = restoranService.changeRestoran(updatedData);
 
         assertEquals("kaefci", dataFromServiceCall.getNama());
         assertEquals("dummy", dataFromServiceCall.getAlamat());
         assertEquals(Long.valueOf(1), dataFromServiceCall.getIdRestoran());
         assertEquals(Integer.valueOf(14022), dataFromServiceCall.getNomorTelepon());
+    }
+
+    @Test
+    public void whenDeleteRestoranCalledItShouldDeleteRestoranData(){
+        RestoranModel restoranModel = new RestoranModel();
+        restoranModel.setNama("kaefsi");
+        restoranModel.setAlamat("kutek");
+        restoranModel.setNomorTelepon(11111);
+        restoranModel.setIdRestoran(1L);
+
+        when(restoranDB.findById(1L)).thenReturn(Optional.of(restoranModel));
+        restoranService.addRestoran(restoranModel);
+        restoranService.deleteRestoran(restoranModel);
+        verify(restoranDB, times(1)).delete(restoranModel);
     }
 
 }
