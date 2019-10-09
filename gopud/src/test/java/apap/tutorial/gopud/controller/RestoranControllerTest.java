@@ -46,4 +46,66 @@ public class RestoranControllerTest {
         mockMvc.perform(get("/")).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    private RestoranModel generateDummyRestoranModel(int count) {
+        RestoranModel dummyRestoranModel = new RestoranModel();
+        dummyRestoranModel.setNama("dummy " + count);
+        dummyRestoranModel.setAlamat("alamat " + count);
+        dummyRestoranModel.setIdRestoran((long)count);
+        dummyRestoranModel.setNomorTelepon(14000);
+        dummyRestoranModel.setListMenu(new ArrayList<>());
+        return dummyRestoranModel;
+    }
+
+    @Test
+    public void whenViewAllRestoranAccessItShouldShowAllRestoranData() throws Exception {
+        List<RestoranModel> allRestoranInTheDatabase = new ArrayList<>();
+        for (int loopTimes = 3; loopTimes > 0; loopTimes--) {
+            allRestoranInTheDatabase.add(generateDummyRestoranModel(loopTimes));
+        }
+
+        when(restoranService.getRestoranList()).thenReturn(allRestoranInTheDatabase);
+        
+        mockMvc.perform(get("/restoran/view-all"))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(content().string(Matchers.containsString("Daftar Seluruh Restoran")))
+        .andExpect(content().string(Matchers.containsString("ID Restoran")))
+        .andExpect(model().attribute("restoList", hasSize(3)))
+        .andExpect(model().attribute("restoList", hasItem(
+            allOf(
+                hasProperty("idRestoran", is(1L)),
+                hasProperty("nama", is("dummy 1")),
+                hasProperty("alamat", is("alamat 1"))
+            )
+        )))
+        .andExpect(model().attribute("restoList", hasItem(
+            allOf(
+                hasProperty("idRestoran", is(2L)),
+                hasProperty("nama", is("dummy 2")),
+                hasProperty("alamat", is("alamat 2"))
+            )
+        )))
+        .andExpect(model().attribute("restoList", hasItem(
+            allOf(
+                hasProperty("idRestoran", is(3L)),
+                hasProperty("nama", is("dummy 3")),
+                hasProperty("alamat", is("alamat 3"))
+            )
+        )));
+        verify(restoranService, times(1)).getRestoranList();
+    }
+
+    @Test
+    public void whenRestoranAddPostFormItShouldSuccessfullyReturnToRightView() throws Exception {
+        String nama = "Dummy Restoran";
+        String alamat = "Dummy Alamat";
+        mockMvc.perform(post("/restoran/add")
+            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .param("nama", nama)
+            .param("alamat", alamat)
+        )
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.view().name("add-restoran"))
+        .andExpect(model().attribute("namaResto", is(nama)));
+    }
+
 }
