@@ -7,7 +7,7 @@
 </head>
 <body>
     <nav th:replace="fragments/fragment :: navbar"></nav>
-    <h3>Tambah Produk</h3>
+    <h3>Tambah Menu</h3>
 
     <form th:action="@{/menu/add}" th:object="${menu}" method="POST">
         <table>
@@ -17,7 +17,6 @@
                     <th>Deskripsi</th>
                     <th>Harga</th>
                     <th>Durasi Masak (menit)</th>
-                    <th><button class="btn btn-sm btn-primary">Add Row</button></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +25,6 @@
                     <td><input type="text" name="deskripsi"/></td>
                     <td><input type="number" name="harga"/></td>
                     <td><input type="number" name="durasiMasak"/></td>
-                    <td><button class="btn btn-sm btn-danger">Hapus</button></td>
                 </tr>
             </tbody>
         </table>
