@@ -110,7 +110,6 @@
 
     Pada RestoranModel dan MenuModel, terdapat @OneToMany dan @ManyToOne yang menunjukkan relasi model-model tersebut. @OneToMany yang ada di RestoranModel menunjukkan bahwa satu restoran dapat memiliki banyak menu, dan @ManyToOne yang ada di MenuModel menunjukkan bahwa banyak menu dapat dimiliki satu restoran. Dengan mendefinisikan relasi untuk kedua model ini, database akan lebih mudah dalam mengelola objek-objek yang ada.
 
-
 5. ***Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER***
 
     FetchType.LAZY digunakan saat kita hanya ingin melakukan fetch saat kita membutuhkan datanya. Biasanya, FetchType ini digunakan untuk relasi one-to-many atau many-to-many. Sebaliknya, FetchType.EAGER digunakan saat kita ingin data yang akan di-*fetch* sudah ada saat kita membutuhkannya, jadi ia melakukan fetch seawal mungkin. Biasanya, FetchType ini digunakan untuk relasi many-to-one atau one-to-one.
@@ -131,6 +130,8 @@
         - Menambahkan model.addAttribute("pagetitle", "Form Add Menu"); dan yang lainnya pada controller
 
 2. ***Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 3.***
+    
+    Saya mempelejari scope dari th:object dalam form, penggunaan naming pada params request, dan cara untuk membuat dynamic field. Sebagai menggunakan sumber ini untuk mengerjakan soal nomor 3. Pertama saya mengubah view add form menu yang tadinya menampilkan menu lalu saya ubah menjadi menampilkan listMenu dari restoran sehingga nantinya listMenu tersebut dapat dimanipulasi. Lalu saya membuat looping dan binding pada masing-masing field yang ada dengan cara mengakses listMenu berdasarkan index nya. Setelah itu saya membuat tombol add row, delete row, dan submit dengan link action yang sama, namun mempunyai name yang berbeda, yang nantinya akan menjadi params request di controller. Terakhir, saya mengimplementasi controller sesuai dengan fungsi masing-masing tombol.
 
 3. ***Jelaskan perbedaan th:include dan th:replace.***
 
@@ -148,7 +149,6 @@
 
     Thymeleaf dapat meng-*include* beberapa bagian dari halaman lain sebagai *fragment* menggunakan *th:include* (akan meng-*include* konten dari fragment ke *host tag*) atau *th:replace* (akan menggantikan *host tag* dengan fragment tersebut).
     
-
 4. ***Jelaskan bagaimana penggunaan th:object beserta tujuannya.***
 
     Penggunaan *th:object* di dalam implementasi Thymeleaf digunakan untuk menentukan objek mana yang terikat dengan data-data formulir yang dikirimkan. Jadi, hal ini berguna untuk mendeklarasikan objek model yang akan digunakan untuk mengumpulkan data formulir. Misalnya, kita memiliki potongan kode seperti berikut:
@@ -156,6 +156,32 @@
         <form th:action="@{/menu/add}" th:object="${menu}" method="POST">
     
     Artinya, pada tag *form* tersebut kita menyisipkan `..th:object="${menu}"..` sebagai tanda bahwa formulir tersebut menggunakan objek **menu** sebagai model untuk pengumpulan data formulirnya.
+
+### What I did not understand
+- [ ] -
+
+## Tutorial 5
+### What I have learned today
+1. ***Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.***
+    
+    Bagian given berupa inisiasi dummyStore, men-set attribut-attribut dari dummy tersebut, dan mengatur kembalian database ketika menggunakan service. Bagian when berupa pemanggilan mockMvc.perform(get("/store/view?idStore=1")) yang akan berinteraksi dengan controller langsung dan mengembalikan halaman berdasarkan controller. Bagian and then berupa pemanggilan method .andExpect(...) yang berfungsi untuk melakukan pengecekan interaksi yang diharapkan.
+    
+2. ***Jelaskan perbedaan line coverage dan logic coverage.***
+    
+     Line coverage hanya meng-cover kode dengan menghitung jumlah line saja berdasarkan kode yang yang diuji saat testing. Sedangkan logic coverage meng-handle logic code yang berupa branching (seperti if else), sehingga nantinya logic coverage dapat membantu penambahan line coverage secara keseluruhan.
+     
+3. ***Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
+seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin
+terjadi?***
+
+    Unit test terlebih dahulu baru melakukan implementasi code dari apa yang sudah di test. Hal tersebut dilakukan agar meminimalisir error, serta berfungsi untuk membuat gambaran dan batasan code yang akan diimplementasikan. Jika urutannya dibalik, maka resiko untuk terjadi error meningkat, dan (mungkin) baru diketahui pada saat fase testing, dimana hal tersebut sangat tidak efisien dan memakan waktu.
+    
+4. [Bonus] ***Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam
+perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari
+perhitungan code coverage?***
+
+    Karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengganggu skor akhir dari penghitungan coverage. Hal-hal yang dapat menyebabkan di exlude antara lain file built-in , file yang mempunyai code coverage rendah dan akan menimbukan kerusakan coverage secara keseluruhan dan serta file configurasi yang tidak terdapat pada proses utama didalamnya.
+    
 
 ### What I did not understand
 - [ ] -
