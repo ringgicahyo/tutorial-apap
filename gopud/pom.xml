@@ -87,13 +87,7 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<exludes>
-						<exclude>apap/tutorial/gopud/*</exclude>
-					</exludes>
-				</configuration>
 			</plugin>	
 		</plugins>
 	</build>
-
 </project>
