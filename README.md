@@ -185,3 +185,21 @@ perhitungan code coverage?***
 
 ### What I did not understand
 - [ ] -
+
+## Tutorial 6
+### What I have learned today
+1. ***Apa itu postman? Apa kegunaan dari postman?***
+    
+    Postman merupakan aplikasi yang memiliki *environment* untuk pengembangan API. Dengan Postman, kita bisa mendesain, *mock*, *debug*, tes, mendokumentasikan, memonitor, dan menerbitkan API kita di satu tempat. Postman berfungsi sebagai REST Client dimana dapat digunakan untuk uji REST API.
+        
+2. ***Apa kegunaan dari annotation @JsonIgnoreProperties?***
+    
+    @JsonIgnoreProperties mengabaikan properti logis yang ditentukan dalam serialisasi dan deserialisasi JSON. Itu dijelaskan di tingkat kelas.
+    Contohnya ketika kita memberikan *true* untuk elemen **ignoreUnknown**, maka dalam deserialization jika data JSON memiliki bidang yang tidak ada properti logis maka bidang JSON akan diabaikan dan tidak ada kesalahan akan dilemparkan.
+     
+3. ***Apa itu ResponseEntity dan apa kegunaannya?***
+
+    ResponseEntity mewakili respons HTTP, termasuk tajuk, isi, dan status. Sementara @ResponseBody menempatkan *return value* ke *body* dari *response*, ResponseEntity juga memungkinkan kita untuk menambahkan header dan kode status.
+
+### What I did not understand
+- [ ] -

@@ -18,11 +18,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "menu")
+@JsonIgnoreProperties(value = {"restoran"}, allowSetters = true)
 public class MenuModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +51,6 @@ public class MenuModel implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "restoranId", referencedColumnName = "idRestoran", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private RestoranModel restoran;
 
     public Long getId() {
