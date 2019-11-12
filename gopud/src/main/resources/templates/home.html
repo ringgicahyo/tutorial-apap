@@ -26,7 +26,10 @@
 
                             <label> Password</label>
                             <input type="password" name="password" class="form-control"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password harus terdiri dari minimal 8 karakter dengan kombinasi huruf dan angka">
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" title="Password harus terdiri dari minimal 10 karakter dengan kombinasi huruf dan angka">
+
+                            <label> Konfirmasi Password</label>
+                            <input type="password" name="checkPassword" class="form-control" required />
 
                             <label> Role</label>
                             <select name="role" class="form-control">

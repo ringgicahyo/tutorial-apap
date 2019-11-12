@@ -5,6 +5,7 @@ import apap.tutorial.gopud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,8 +18,17 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    private String addUserSubmit(@ModelAttribute UserModel user){
-        userService.addUser(user);
+    private String addUserSubmit(@ModelAttribute UserModel user, Model model, @RequestParam("password") String password, @RequestParam("checkPassword") String checkPassword){
+        if (userService.checkCharacter(user.getPassword())){
+            UserModel tempUser = userService.findByUsername(user.getUsername());
+            if (tempUser != null) {
+                if (!userService.checkPassword(password, checkPassword)){
+                    return "home.html";
+                } else {
+                    userService.addUser(user);
+                }
+            }
+        }
         return "home.html";
     }
 

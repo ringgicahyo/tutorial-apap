@@ -3,7 +3,6 @@ package apap.tutorial.gopud.service;
 import apap.tutorial.gopud.model.UserModel;
 import apap.tutorial.gopud.repository.UserDB;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +62,11 @@ public class UserServiceImpl implements UserService {
         } catch (NullPointerException e) {
             return null;
         }
+    }
+
+    @Override
+    public boolean checkPassword(String password, String checkPassword){
+        return password.equals(checkPassword);
     }
 
     @Override

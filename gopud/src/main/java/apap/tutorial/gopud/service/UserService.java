@@ -11,6 +11,7 @@ public interface UserService {
     boolean checkCharacter(String password);
     boolean validatePassword(String pass, String oldPassword, String checkPassword);
     UserModel changePassword(String username, String password);
+    boolean checkPassword(String password, String checkPassword);
     UserModel findByUsername(String user);
 
 
