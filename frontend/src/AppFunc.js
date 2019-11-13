@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import List from "./components/List";
 import dummyItems from "./items.json";
+import EmptyState from "./components/EmptyState";
 /**
 * Building React component using functional programming paradigm
 */
@@ -15,7 +16,18 @@ function App() {
 // below is the return value of useState
 // [favItems, setFavItems] = [state, setState]
     const [favItems, setFavItems] = useState(() => []);
-    function handleItemClick(item) {
+    function handleItemClick1(item) {
+        // immutability
+        const newItems = [...favItems];
+        const newItem = { ...item };
+        // find index of item with id
+        const targetInd = newItems.findIndex(it => it.id === newItem.id);
+        if (targetInd < 0) newItems.push(newItem);
+        // schedule to set a new state
+        setFavItems(newItems);
+    }
+
+    function handleItemClick2(item) {
         // immutability
         const newItems = [...favItems];
         const newItem = { ...item };
@@ -25,6 +37,11 @@ function App() {
         else newItems.splice(targetInd, 1); // delete 1 item at index targetInd
         // schedule to set a new state
         setFavItems(newItems);
+    }
+
+    let emptyState;
+    if (favItems.length == 0) {
+      emptyState = <EmptyState/>
     }
 
     return (
@@ -39,15 +56,16 @@ function App() {
                         <List
                             title="Our Menu"
                             items={dummyItems}
-                            onItemClick={handleItemClick}
+                            onItemClick={handleItemClick1}
                         />
                     </div>
                     <div className="col-sm">
                         <List
                             title="My Favorite"
                             items={favItems}
-                            onItemClick={handleItemClick}
+                            onItemClick={handleItemClick2}
                         />
+                        {emptyState}
                     </div>
                 </div>
             </div>
