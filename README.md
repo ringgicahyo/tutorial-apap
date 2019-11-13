@@ -246,11 +246,13 @@ perhitungan code coverage?***
 
     Pada nomor 1, saya menambahkan atribut **hidden** pada tag `<input/>` ketika kondisi *checkbox* berupa *unchecked* atau di *source code* yaitu **!checked**.
     ![alt text](https://i.ibb.co/TvN5T1f/1573642191467.jpg)
+    ![alt text](https://i.ibb.co/JF09WzC/1573645706876.jpg)
 
 - Nomor 2
 
     Pada nomor 2, saya membuat fungsi yang hampir serupa dengan **handleItemClick**, tetapi saya menghapus baris kondisi **else** setelah **if** agar saat *item* pada bagian kiri (*Our Menu*) diklik, tidak akan terjadi *splice* atau penghapusan *item* yang telah menjadi favorit saya.
     ![alt text](https://i.ibb.co/0JSjN8y/1573642347441.jpg)
+    ![alt text](https://i.ibb.co/g4f38Np/message-Image-1573645734948.jpg)
 
 - Nomor 3 dan 4
 
@@ -261,6 +263,8 @@ perhitungan code coverage?***
     ![alt text](https://i.ibb.co/JxL3K2N/1573642625389.jpg)
     ![alt text](https://i.ibb.co/thvMvfS/1573642663853.jpg)
     ![alt text](https://i.ibb.co/txTCSj5/1573643242304.jpg)
+    ![alt text](https://i.ibb.co/dkyYjpg/1573645832786.jpg)
+    ![alt text](https://i.ibb.co/DYnGmqW/1573645851793.jpg)
 
  
 ### What I did not understand
