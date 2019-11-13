@@ -92,6 +92,7 @@
 ### What I did not understand
 - [ ] Bagaimana cara menggunakan Spring Annotation saat mapping error request?
 
+---
 ## Tutorial 3
 ### What I have learned today
 1. ***Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari method tersebut?***
@@ -119,6 +120,7 @@
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 4
 ### What I have learned today
 1. ***Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2.***
@@ -160,6 +162,7 @@
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 5
 ### What I have learned today
 1. ***Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.***
@@ -186,6 +189,7 @@ perhitungan code coverage?***
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 6
 ### What I have learned today
 1. ***Apa itu postman? Apa kegunaan dari postman?***
@@ -204,6 +208,7 @@ perhitungan code coverage?***
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 7
 ### What I have learned today
 1. ***Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
@@ -233,6 +238,7 @@ perhitungan code coverage?***
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 8
 ### What I have learned today
 1. ***Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.***
