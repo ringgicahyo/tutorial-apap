@@ -26,12 +26,6 @@ public class RestoranController {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("/")
-    public String home(Model model) { 
-        model.addAttribute("pagetitle", "Home");
-        return "home";
-    }
-
     // URL mapping yang digunakan untuk mengakses halaman add restoran
     @RequestMapping(value = "/restoran/add", method = RequestMethod.GET)
     public String addRestoranFormPage(Model model) {

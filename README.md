@@ -203,3 +203,32 @@ perhitungan code coverage?***
 
 ### What I did not understand
 - [ ] -
+
+## Tutorial 7
+### What I have learned today
+1. ***Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+      yang telah anda buat) konsep tersebut diimplementasi?***
+    
+    Otentikasi adalah verifikasi apakah seseorang itu adalah orang yang berhak. Biasanya melibatkan username dan password, tapi dapat menyertakan metode lain yang menunjukan identitas, seperti kartu pintar, sidik jari, dll. Otorisasi adalah pencarian apakah orang yang sudah diidentifikasi (diotentikasi), diijinkan untuk memanipulasi sumber daya tertentu. Ini biasanya ditentukan dengan mencari apakah orang itu merupakan bagian dari aturan khusus yang memiliki akses ke sumber daya.
+        
+2. ***Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya!***
+    
+    Fungsi BCrypt adalah algoritma hash password default untuk OpenBSD dan sistem lainnya termasuk beberapa distribusi Linux seperti SUSE Linux. Awalan "$ 2a $" atau "$ 2b $" (atau "$ 2y $") dalam string hash dalam file kata kunci bayangan menunjukkan bahwa string hash adalah hash bcrypt dalam format kriptografi modular. Sisa dari string hash mencakup parameter biaya, salt 128 bit (basis-64 yang dikodekan sebagai 22 karakter), dan 184 bit dari nilai hash yang dihasilkan (basis-64 dikodekan sebagai 31 karakter).
+    
+    Cara kerjanya yaitu saat kita membuat user baru dengan mengisi username dan password, maka ketika kita klik simpan, password akan dienkripsi menggunakan fungsi BCrypt sehingga password yang terlihat pada database adalah password yang sudah dienkripsi.
+    
+3. ***Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java?***
+
+    UUID itu singkatan dari Universally Unique Identifier yang dijadikan sebagai standar identifier sama Open Software Foundation (OSF) sebagai bagian dari Distributed Computing Environment (DCE). UUID merupakan kode identifikasi unik yang diberikan oleh sistem. Maksud dari UUID adalah untuk memungkinkan sistem terdistribusi untuk secara unik mengidentifikasi informasi tanpa koordinasi pusat signifikan.
+    
+    Mirip seperti BCrypt, bedanya kali ini adalah ID, bukan password. Saat kita membuat user baru, sistem akan otomatis melakukan pemberian kode unik yang akan terlihat pada database dengan tipe UUID, contohnya UUID=62fa5eac-3df4-448d-a576-916dd5b432f2.
+
+4. ***Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+      padahal kita sudah memiliki class UserRoleServiceImpl.java?***
+      
+    Untuk menggunakan user service kita sendiri atau custom service, kita perlu mengimplementasikan interface UserDetailsService.
+    Kita akan membuat kelas yang disebut UserDetailsServiceImpl yang mengganti metode loadUserByUsername() dari interface.
+    
+    Dalam metode ini, kita mengambil user object menggunakan DAO, dan jika ada, bungkus menjadi objek user, yang mengimplementasikan UserDetailsService, dan mengembalikannya.
+### What I did not understand
+- [ ] -
