@@ -2,7 +2,7 @@
 
 ## Authors
 
-* **ringgi.cahyo** - *1706025005* - *B*
+* **ringgi.cahyo** - *1706025005* - *C*
 
 ---
 ## Tutorial 1
@@ -92,6 +92,7 @@
 ### What I did not understand
 - [ ] Bagaimana cara menggunakan Spring Annotation saat mapping error request?
 
+---
 ## Tutorial 3
 ### What I have learned today
 1. ***Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari method tersebut?***
@@ -119,6 +120,7 @@
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 4
 ### What I have learned today
 1. ***Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana anda menyelesaikan latihan nomor 2.***
@@ -160,6 +162,7 @@
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 5
 ### What I have learned today
 1. ***Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and then.***
@@ -186,6 +189,7 @@ perhitungan code coverage?***
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 6
 ### What I have learned today
 1. ***Apa itu postman? Apa kegunaan dari postman?***
@@ -204,6 +208,7 @@ perhitungan code coverage?***
 ### What I did not understand
 - [ ] -
 
+---
 ## Tutorial 7
 ### What I have learned today
 1. ***Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
@@ -230,5 +235,37 @@ perhitungan code coverage?***
     Kita akan membuat kelas yang disebut UserDetailsServiceImpl yang mengganti metode loadUserByUsername() dari interface.
     
     Dalam metode ini, kita mengambil user object menggunakan DAO, dan jika ada, bungkus menjadi objek user, yang mengimplementasikan UserDetailsService, dan mengembalikannya.
+### What I did not understand
+- [ ] -
+
+---
+## Tutorial 8
+### What I have learned today
+1. ***Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.***
+- Nomor 1
+
+    Pada nomor 1, saya menambahkan atribut **hidden** pada tag `<input/>` ketika kondisi *checkbox* berupa *unchecked* atau di *source code* yaitu **!checked**.
+    ![alt text](https://i.ibb.co/TvN5T1f/1573642191467.jpg)
+    ![alt text](https://i.ibb.co/JF09WzC/1573645706876.jpg)
+
+- Nomor 2
+
+    Pada nomor 2, saya membuat fungsi yang hampir serupa dengan **handleItemClick**, tetapi saya menghapus baris kondisi **else** setelah **if** agar saat *item* pada bagian kiri (*Our Menu*) diklik, tidak akan terjadi *splice* atau penghapusan *item* yang telah menjadi favorit saya.
+    ![alt text](https://i.ibb.co/0JSjN8y/1573642347441.jpg)
+    ![alt text](https://i.ibb.co/g4f38Np/message-Image-1573645734948.jpg)
+
+- Nomor 3 dan 4
+
+    Pada nomor 3, pertama saya membuat *constructor* kemudian menambahkan sebuah *state* yaitu **showFav** dengan *default* kondisi berupa **false**. Lalu melakukan *binding* dengan `this.showFavChange = this.showFavChange.bind(this);`. Tidak lupa setelah itu membuat sebuah fungsi untuk mengganti kondisi *state* dari **showFav** dengan nama **showFavChange()**. Kemudian saya membuat sebuah variabel *const* **showFavorite** yang berisi list elemen dari kolom *My Favorite* dengan kondisi *state* pada **showFav** berupa *true* ataupun *false*. Kemudian, saat melakukan *rendering*, saya melemparkan variable **showFavorite** yang telah saya buat tadi pada posisi yang seharusnya dengan cara `{showFavorite}`.
+    
+    Pada nomor 4, saya membuat file baru berupa sebuah *component* yang saya beri nama **Empty State** dengan isi seperti pada gambar. Kemudian saya membuat sebuah variabel *let* dengan nama **emptyState** untuk menyimpan komponen tersebut. Lalu saya memberikan kondisi di saat tidak ada item favorit, maka komponen **emptyState** akan dilemparkan dengan cara `{emptyState}`.
+
+    ![alt text](https://i.ibb.co/JxL3K2N/1573642625389.jpg)
+    ![alt text](https://i.ibb.co/thvMvfS/1573642663853.jpg)
+    ![alt text](https://i.ibb.co/txTCSj5/1573643242304.jpg)
+    ![alt text](https://i.ibb.co/dkyYjpg/1573645832786.jpg)
+    ![alt text](https://i.ibb.co/DYnGmqW/1573645851793.jpg)
+
+ 
 ### What I did not understand
 - [ ] -
