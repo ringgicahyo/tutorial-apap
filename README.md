@@ -173,15 +173,11 @@
     
      Line coverage hanya meng-cover kode dengan menghitung jumlah line saja berdasarkan kode yang yang diuji saat testing. Sedangkan logic coverage meng-handle logic code yang berupa branching (seperti if else), sehingga nantinya logic coverage dapat membantu penambahan line coverage secara keseluruhan.
      
-3. ***Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
-seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin
-terjadi?***
+3. ***Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin terjadi?***
 
     Unit test terlebih dahulu baru melakukan implementasi code dari apa yang sudah di test. Hal tersebut dilakukan agar meminimalisir error, serta berfungsi untuk membuat gambaran dan batasan code yang akan diimplementasikan. Jika urutannya dibalik, maka resiko untuk terjadi error meningkat, dan (mungkin) baru diketahui pada saat fase testing, dimana hal tersebut sangat tidak efisien dan memakan waktu.
     
-4. [Bonus] ***Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam
-perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari
-perhitungan code coverage?***
+4. [Bonus] ***Jelaskan mengapa pada latihan no 3, main class spring tidak diikutsertakan ke dalam perhitungan coverage? Apa saja yang dapat menyebabkan suatu class dapat di-exclude dari perhitungan code coverage?***
 
     Karena main class method merupakan class yang tidak dihitung coverage nya, sehingga akan mengganggu skor akhir dari penghitungan coverage. Hal-hal yang dapat menyebabkan di exlude antara lain file built-in , file yang mempunyai code coverage rendah dan akan menimbukan kerusakan coverage secara keseluruhan dan serta file configurasi yang tidak terdapat pada proses utama didalamnya.
     
@@ -235,6 +231,7 @@ perhitungan code coverage?***
     Kita akan membuat kelas yang disebut UserDetailsServiceImpl yang mengganti metode loadUserByUsername() dari interface.
     
     Dalam metode ini, kita mengambil user object menggunakan DAO, dan jika ada, bungkus menjadi objek user, yang mengimplementasikan UserDetailsService, dan mengembalikannya.
+
 ### What I did not understand
 - [ ] -
 
@@ -269,3 +266,65 @@ perhitungan code coverage?***
  
 ### What I did not understand
 - [ ] -
+
+## Tutorial 9
+### What I have learned today
+1. ***Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?***
+
+    Saya menambahkan beberapa baris kode pada event **submitAddRestoranHandler** untuk melakukan *setState* dengan kode seperti berikut:
+        
+        this.setState({ 
+            nama: "", 
+            alamat: "", 
+            nomorTelepon: "", 
+            rating: "" 
+        });
+    
+    Saya menggunakan langkah tersebut karena dengan mengganti *state* yang ada pada form tambah restoran menjadi *string* kosong, maka akan menjadikan *value* dari setiap *form field* tersebut seperti belum diisi sama sekali.
+
+2. ***Jelaskan fungsi dari async dan await!***
+
+    *Keyword* **async** menyatakan fungsi *asynchronous*, yang berarti berfungsi untuk secara otomatis mengembalikan sebuah *return value* berupa objek dengan bentuk/tipe **Promise**, atau ditolak dengan *uncaught errors* dan dapat menggunakan *keyword* **await**.
+
+    *Keyword* **await** berfungsi untuk memberi tahu program untuk keluar secara sementara dari fungsi **async** dan melanjutkan programnya ketika tugas yang diberikan telah selesai.
+
+3. ***Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada pertanyaan ini.***
+
+    ![alt text](https://i.ibb.co/09Bysdx/1.jpg)
+    ![alt text](https://i.ibb.co/nCF8kX0/2.jpg)
+    ![alt text](https://i.ibb.co/bKwwd7k/3.jpg)
+    ![alt text](https://i.ibb.co/Z6Qf01s/4.jpg)
+    ![alt text](https://i.ibb.co/HFqZ1yT/5.jpg)
+    ![alt text](https://i.ibb.co/wR3s9fh/6.jpg)
+    ![alt text](https://i.ibb.co/zGH7qpB/7.jpg)
+
+4. ***Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount. Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.***
+
+    **componentDidMount:**
+    - Fungsi: Menandakan tahap akhir dari *mounting lifecycle* yang dipanggil setelah HTML yang dirender telah selesai melakukan *loading*.
+    - Best time to call method: Dipanggil saat HTML telah selesai melakukan *rendering*. Selain itu, fungsi ini dapat digunakan saat React ingin terhubung (mengambil data) dengan aplikasi eksternal  seperti API dari website lain, atau *framework* JavaScript. Setelah itu kita dapat menggunakan *method* **setState()** untuk memperbarui data yang didapat dan melakukan *rendering* dengan data yang baru.
+    - Use case: Mengambil data (API) dari website lain untuk kemudian dirender.
+
+    **shouldComponentUpdate:**
+    - Fungsi: Memberi tahu React jika output dari komponen tidak terpengaruh oleh perubahan saat ini di dalam *state* dan *props*. Dengan kata lain, memberi tahu bahwa apakah komponen harus diperbarui atau tidak, dengan *return value* berupa *boolean* *true or false* dan dengan menerima parameter *nextProps* dan *nextState*.
+    - Best time to call method: Saat terdapat komponen yang diperbarui setelah berjalannya *method* **componentWillReceiveProps**, tetapi sebelum proses *rendering* dimulai.
+    - Use case: Ingin mengubah komponen dan melakukan *rendering* kembali pada setiap *state* yang berubah.
+
+    **componentDidUpdate:**
+    - Fungsi: Untuk berinteraksi dengan sesuatu di luar *environment* React, seperti browser atau API.
+    - Best time to call method: Saat suatu *instance* di dalam suatu komponen melakukan *update* dan ketika HTML yang dirender telah selesai melakukan *loading*.
+    - Use case: Melakukan *update* pada komponen
+
+    **componentWillReceiveProps:**
+    - Fungsi: Memberi tahu React bahwa akan ada perubahan pada komponen yang memiliki *props*.
+    - Best time to call method: Saat suatu *instance* di dalam suatu komponen melakukan *update* dan sebelum proses *rendering* dimulai. *Method* ini hanya akan dipanggil saat komponen akan menerima *props*.
+    - Use case: Melakukan reset state.
+
+    **componentWillUnmount:**
+    - Fungsi: Melakukan pembersihan yang diperlukan dalam *method* ini, seperti timer yang tidak valid, membatalkan permintaan jaringan, atau membersihkan langganan apa pun yang dibuat di **componentDidMount**.
+    - Best time to call method: Ketika ada komponen yang ingin dihapus dari DOM, misalnya ketika DOM dirender ulang tanpa komponen atau pengguna berganti website atau menutup browsernya.
+    - Use case: Menghapus interval waktu fungsi berjalan.
+
+### What I did not understand
+- [ ] -
+
